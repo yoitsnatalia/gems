@@ -2,15 +2,15 @@ const pool = require('../config/database');
 
 class User {
     static async create(userData) {
-        const { username, password, password_hash } = userData;
+        const { username, email, password_hash } = userData;
 
         const query = `
-            INSERT INTO users ( username, password, password_hash )
+            INSERT INTO users ( username, email, password_hash )
             VALUES ($1, $2, $3)
             RETURNING id, username, email, created_at
         `;
 
-        const result = await pool.query(query, [ username, password, password_hash ]);
+        const result = await pool.query(query, [ username, email, password_hash ]);
         return result.rows[0];
     }
 
