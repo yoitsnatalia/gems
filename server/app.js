@@ -5,6 +5,9 @@ require('dotenv').config();
 // Import database initialization
 const initializeDatabase = require('./config/initDB');
 
+// Import routes
+const authRoutes = require('./routes/auth');
+
 const app = express();
 
 // Middleware
@@ -14,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Initialize database on startup
 initializeDatabase().catch(console.error);
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {
@@ -32,6 +38,11 @@ app.get('/api/test-db', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Database connection failed', details: error.message });
   }
+});
+
+// 404 handler
+app.use('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
 });
 
 // Error handling middleware
