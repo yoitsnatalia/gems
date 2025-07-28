@@ -13,7 +13,7 @@ export const authService = {
 
     // Login user
     login: async (credentials) => {
-        const response = await api.post('api/login', credentials);
+        const response = await api.post('auth/login', credentials);
         if (response.data.token) {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
