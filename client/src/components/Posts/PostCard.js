@@ -44,7 +44,7 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false }) => {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-semibold">
-            {post.username.charAt(0).toUpperCase()}
+            {(post.username && post.username.charAt(0).toUpperCase()) || '?'}
           </div>
           <div>
             <h4 className="font-semibold text-gray-900">{post.username}</h4>

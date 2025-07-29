@@ -12,7 +12,7 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
   const markers = useRef([]);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    if (map.current || !mapContainer.current) return; // initialize map only once
 
     // Default to San Francisco if no user location
     const defaultLocation = userLocation || { latitude: 37.7749, longitude: -122.4194 };
@@ -28,15 +28,15 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
       setLoading(false);
     });
 
-    // Add click handler for map
-    map.current.on('click', (e) => {
-      if (onMapClick) {
-        onMapClick({
-          latitude: e.lngLat.lat,
-          longitude: e.lngLat.lng
+    if (onMapClick) {
+        // Add click handler for map
+        map.current.on('click', (e) => {
+            onMapClick({
+            latitude: e.lngLat.lat,
+            longitude: e.lngLat.lng
+            });
         });
-      }
-    });
+    }
 
     // Add navigation controls
     map.current.addControl(new mapboxgl.NavigationControl());
@@ -44,9 +44,10 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
     return () => {
       if (map.current) {
         map.current.remove();
+        map.current = null;
       }
     };
-  }, []);
+  }, [onMapClick, userLocation]);
 
   // Update map center when user location changes
   useEffect(() => {
