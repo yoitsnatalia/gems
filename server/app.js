@@ -8,6 +8,7 @@ const initializeDatabase = require('./config/initDB');
 // Import routes
 const authRoutes = require('./routes/auth');
 const postsRoutes = require('./routes/posts');
+const friendsRoutes = require('./routes/friends');
 
 const app = express();
 
@@ -22,6 +23,7 @@ initializeDatabase().catch(console.error);
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postsRoutes);
+app.use('/api/friends', friendsRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {
