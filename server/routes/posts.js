@@ -20,8 +20,14 @@ router.get('/my-posts', postsController.getUserPosts);
 // Get nearby posts for discovery
 router.get('/nearby', postsController.getNearbyPosts);
 
+// Get user's unlocked posts
+router.get('/unlocked', postsController.getUnlockedPosts);
+
 // Check if user can unlock a specific post
 router.get('/:postId/unlock-check', postsController.checkUnlockEligibility);
+
+// Unlock a post
+router.post('/:postId/unlock', postsController.unlockPost);
 
 // Get specific post details
 router.get('/:postId', postsController.getPostById);
