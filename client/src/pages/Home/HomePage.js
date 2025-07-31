@@ -254,7 +254,7 @@ const HomePage = () => {
                  >
                    📸 Create Post
                  </button>
-                 
+                 <a
                    href="/friends"
                    className="btn-secondary w-full text-sm block text-center"
                  >
