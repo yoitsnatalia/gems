@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import FriendSearch from '../../components/Friends/FriendSearch';
+import FriendSearch from '../../components/Friends/FriendsSearch';
 import FriendsList from '../../components/Friends/FriendsList';
 
 const FriendsPage = () => {
