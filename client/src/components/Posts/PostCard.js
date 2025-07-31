@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false }) => {
+const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false, onUnlock }) => {
   const [imageLoading, setImageLoading] = useState(true);
+  const [unlocking, setUnlocking] = useState(false);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -11,6 +12,17 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false }) => {
       hour: '2-digit',
       minute: '2-digit'
     });
+  };
+
+  const handleUnlock = async () => {
+    if (!onUnlock) return;
+    
+    setUnlocking(true);
+    try {
+      await onUnlock();
+    } finally {
+      setUnlocking(false);
+    }
   };
 
   if (!isUnlocked && !canUnlock) {
@@ -25,9 +37,14 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false }) => {
           <p className="text-gray-500 text-sm mb-4">
             By {post.username}
           </p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm mb-4">
             Get closer to unlock this post!
           </p>
+          {post.distance && (
+            <p className="text-gray-400 text-xs">
+              Distance: {Math.round(post.distance)}m away
+            </p>
+          )}
           {onClose && (
             <button onClick={onClose} className="btn-secondary mt-4">
               Close
@@ -44,7 +61,7 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false }) => {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-semibold">
-            {(post.username && post.username.charAt(0).toUpperCase()) || '?'}
+            {post.username.charAt(0).toUpperCase()}
           </div>
           <div>
             <h4 className="font-semibold text-gray-900">{post.username}</h4>
@@ -92,10 +109,17 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false }) => {
 
       {/* Unlock Status */}
       {canUnlock && !isUnlocked && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-          <p className="text-green-700 text-sm font-medium">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+          <p className="text-green-700 text-sm font-medium mb-2">
             🔓 You can unlock this post!
           </p>
+          <button
+            onClick={handleUnlock}
+            disabled={unlocking}
+            className="btn-primary text-sm w-full"
+          >
+            {unlocking ? 'Unlocking...' : '🔓 Unlock Post'}
+          </button>
         </div>
       )}
 
