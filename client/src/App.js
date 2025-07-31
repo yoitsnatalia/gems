@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, useAuth } from './hooks/useAuth';
 import AuthPage from './pages/Login/AuthPage';
 import HomePage from './pages/Home/HomePage';
+import FriendsPage from './pages/Friends/FriendsPage';
 import './App.css';
 
 // Protected Route component
@@ -33,6 +34,14 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <HomePage />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/friends" 
+          element={
+            <ProtectedRoute>
+              <FriendsPage />
             </ProtectedRoute>
           } 
         />
