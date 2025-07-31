@@ -11,7 +11,6 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
   const markers = useRef([]);
 
   useEffect(() => {
-    if (map.current) return;
 
     const defaultLocation = userLocation || { latitude: 37.7749, longitude: -122.4194 };
 
@@ -50,7 +49,7 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
         map.current.remove();
       }
     };
-  }, []);
+  }, [onMapClick, userLocation]);
 
   // Update map center when user location changes
   useEffect(() => {
@@ -115,7 +114,7 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
   }, [posts, onPostClick]);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-[500px]">
       <div ref={mapContainer} className="w-full h-full rounded-lg" />
       
       {loading && (
