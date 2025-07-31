@@ -17,9 +17,14 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // Check file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setError('Image too large. Please choose an image under 5MB.');
+        return;
+      }
+
       setFormData({ ...formData, image: file });
       
-      // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
@@ -29,9 +34,17 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
   };
 
   const handleCameraCapture = () => {
-    // Trigger file input with camera
     if (fileInputRef.current) {
       fileInputRef.current.setAttribute('capture', 'environment');
+      fileInputRef.current.setAttribute('accept', 'image/*');
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleGallerySelect = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.removeAttribute('capture');
+      fileInputRef.current.setAttribute('accept', 'image/*');
       fileInputRef.current.click();
     }
   };
@@ -75,10 +88,18 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
 
   return (
     <div className="card max-w-lg mx-auto">
-      <h3 className="text-xl font-semibold text-gray-900 mb-4">Create New Post</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Create Post</h3>
+        <button
+          onClick={onCancel}
+          className="text-gray-400 hover:text-gray-600 text-xl"
+        >
+          ×
+        </button>
+      </div>
       
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4 text-sm">
           {error}
         </div>
       )}
@@ -88,23 +109,20 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
         {locationLoading ? (
           <div className="flex items-center space-x-2 text-blue-600">
             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
-            <span>Getting your location...</span>
+            <span className="text-sm">Getting location...</span>
           </div>
         ) : location ? (
           <div className="bg-green-50 border border-green-200 rounded-lg p-3">
             <p className="text-green-700 text-sm">
-              📍 Location captured: {location.latitude.toFixed(4)}, {location.longitude.toFixed(4)}
+              📍 Location captured
             </p>
           </div>
         ) : (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-            <p className="text-yellow-700 text-sm">
-              ⚠️ Location required for posts
+            <p className="text-yellow-700 text-sm mb-2">
+              ⚠️ Location required
             </p>
-            <button 
-              onClick={getCurrentLocation}
-              className="btn-primary text-sm mt-2"
-            >
+            <button onClick={getCurrentLocation} className="btn-primary text-sm">
               Get Location
             </button>
           </div>
@@ -119,29 +137,29 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
           </label>
           
           {!preview ? (
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 text-center">
               <div className="space-y-4">
                 <div className="text-gray-400">
-                  <svg className="mx-auto h-12 w-12" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                  <svg className="mx-auto h-8 w-8 sm:h-12 sm:w-12" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
                     onClick={handleCameraCapture}
-                    className="btn-primary"
+                    className="btn-primary text-sm"
                   >
-                    📸 Take Photo
+                    📸 Camera
                   </button>
                   
                   <button
                     type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="btn-secondary"
+                    onClick={handleGallerySelect}
+                    className="btn-secondary text-sm"
                   >
-                    📁 Choose File
+                    📁 Gallery
                   </button>
                 </div>
               </div>
@@ -151,7 +169,7 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
               <img 
                 src={preview} 
                 alt="Preview" 
-                className="w-full h-64 object-cover rounded-lg"
+                className="w-full h-48 sm:h-64 object-cover rounded-lg"
               />
               <button
                 type="button"
@@ -186,7 +204,7 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
             value={formData.caption}
             onChange={(e) => setFormData({ ...formData, caption: e.target.value })}
             placeholder="What's happening here?"
-            className="input-field h-24 resize-none"
+            className="input-field h-20 resize-none text-sm"
           />
         </div>
 
@@ -202,26 +220,25 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
             value={formData.location_name}
             onChange={(e) => setFormData({ ...formData, location_name: e.target.value })}
             placeholder="e.g., Golden Gate Park"
-            className="input-field"
+            className="input-field text-sm"
           />
         </div>
 
         {/* Buttons */}
-        <div className="flex space-x-3">
-          <button
-            type="submit"
-            disabled={loading || !formData.image || !location}
-            className="btn-primary flex-1"
-          >
-            {loading ? 'Creating...' : 'Create Post'}
-          </button>
-          
+        <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={onCancel}
             className="btn-secondary"
           >
             Cancel
+          </button>
+          <button
+            type="submit"
+            disabled={loading || !formData.image || !location}
+            className="btn-primary"
+          >
+            {loading ? 'Creating...' : 'Create Post'}
           </button>
         </div>
       </form>
