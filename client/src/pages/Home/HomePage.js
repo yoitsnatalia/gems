@@ -18,7 +18,6 @@ const HomePage = () => {
   const [unlockedPosts, setUnlockedPosts] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  // All existing useEffect hooks remain the same...
   useEffect(() => {
     const loadUserPosts = async () => {
       try {
