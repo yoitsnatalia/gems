@@ -6,7 +6,8 @@ import { friendsService } from '../../services/friends';
 import MapView from '../../components/Map/MapView';
 import PostCreator from '../../components/Posts/PostCreator';
 import PostCard from '../../components/Posts/PostCard';
-import logo from '../../assets/logo.png';
+import logo_white from '../../assets/gemstone.png';
+import authBackground from '../../assets/auth.png'; 
 
 const HomePage = () => {
   const { user, logout } = useAuth();
@@ -116,15 +117,15 @@ const HomePage = () => {
   const allPosts = [...userPosts, ...friendsPosts];
 
   return (
-    <div className="min-h-screen font-gentium bg-[#DDECD7]">
+    <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${authBackground})` }}>
       {/* Mobile-First Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className=" shadow-sm  sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="flex justify-between items-center lg:h-20 sm:h-16">
             <div className = "flex items-center gap-2">
-              <img src={logo} alt="Logo" className="h-9 w-auto" />
-              <h2 className="text-5xl text-black text-center leading-none">
-                ande
+              <img src={logo_white} alt="Logo" className="h-9 w-auto" />
+              <h2 className="text-5xl text-white text-center leading-none">
+                Gems
               </h2>
             </div>
             
@@ -137,19 +138,28 @@ const HomePage = () => {
                 📊
               </button>
               
-              <a href="/friends" className="btn-secondary text-sm hidden sm:inline-block">
+              <a href="/friends" className="btn-page hidden sm:inline-block">
                 Friends
+              </a>
+
+              <a href="/" className="btn-page hidden sm:inline-block">
+                Map
               </a>
               
               <button
                 onClick={() => setShowPostCreator(!showPostCreator)}
-                className="btn-primary text-sm"
+                className="btn-page"
               >
-                <span className="hidden sm:inline"> Create Post</span>
+                <span className="hidden sm:inline">Post</span>
                 <span className="sm:hidden">📸</span>
               </button>
               
-              <button onClick={logout} className="btn-secondary text-sm hidden sm:inline-block">
+              
+            </div>
+
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <h1 className="btn-page">Profile</h1>
+              <button onClick={logout} className="btn-page hidden sm:inline-block">
                 Logout
               </button>
             </div>
@@ -179,7 +189,7 @@ const HomePage = () => {
                   </div>
                 </div>
                 
-                <div className="h-[31rem] sm:h-80 lg:h-[38rem] rounded-lg overflow-hidden">
+                <div className="h-[31rem] sm:h-80 lg:h-[38rem] rounded-lg border-2 border-gray-700 overflow-hidden">
                   <MapView
                     userLocation={location}
                     posts={allPosts}
@@ -234,22 +244,22 @@ const HomePage = () => {
                 </h3>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-lg sm:text-xl font-bold text-primary-600">
+                    <div className="text-lg sm:text-xl font-bold text-white">
                       {userPosts.length}
                     </div>
                     <div className="text-xs text-gray-500">Posts</div>
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-bold text-secondary-600">
+                    <div className="text-lg sm:text-xl font-bold text-white">
                       {friendsPosts.length}
                     </div>
                     <div className="text-xs text-gray-500">Friends'</div>
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-bold text-green-600">
+                    <div className="text-lg sm:text-xl font-bold text-white">
                       {unlockedPosts.length}
                     </div>
-                    <div className="text-xs text-gray-500">Unlocked</div>
+                    <div className="text-xs text-gray-500">Total Gems Discovered</div>
                   </div>
                 </div>
               </div>

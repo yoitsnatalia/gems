@@ -20,7 +20,7 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
       center: [defaultLocation.longitude, defaultLocation.latitude],
       zoom: window.innerWidth < 768 ? 12 : 13, // Zoom out on mobile
       maxZoom: 18,
-      minZoom: 8
+      
     });
 
     map.current.on('load', () => {
