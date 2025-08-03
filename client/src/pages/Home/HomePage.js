@@ -6,6 +6,7 @@ import { friendsService } from '../../services/friends';
 import MapView from '../../components/Map/MapView';
 import PostCreator from '../../components/Posts/PostCreator';
 import PostCard from '../../components/Posts/PostCard';
+import logo from '../../assets/logo.png';
 
 const HomePage = () => {
   const { user, logout } = useAuth();
@@ -115,13 +116,16 @@ const HomePage = () => {
   const allPosts = [...userPosts, ...friendsPosts];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen font-gentium bg-[#DDECD7]">
       {/* Mobile-First Header */}
       <header className="bg-white shadow-sm border-b sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center lg:h-19 sm:h-16">
-            <div className="flex items-center">
-              <h1 className="text-lg sm:text-xl lg:text-4xl  text-gray-900">ande</h1>
+          <div className="flex justify-between items-center lg:h-20 sm:h-16">
+            <div className = "flex items-center gap-2">
+              <img src={logo} alt="Logo" className="h-9 w-auto" />
+              <h2 className="text-5xl text-black text-center leading-none">
+                ande
+              </h2>
             </div>
             
             <div className="flex items-center space-x-2 sm:space-x-4">
@@ -134,14 +138,14 @@ const HomePage = () => {
               </button>
               
               <a href="/friends" className="btn-secondary text-sm hidden sm:inline-block">
-                👥 Friends
+                Friends
               </a>
               
               <button
                 onClick={() => setShowPostCreator(!showPostCreator)}
                 className="btn-primary text-sm"
               >
-                <span className="hidden sm:inline">📸 Create Post</span>
+                <span className="hidden sm:inline"> Create Post</span>
                 <span className="sm:hidden">📸</span>
               </button>
               
@@ -165,17 +169,17 @@ const HomePage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Map Section */}
             <div className="lg:col-span-3 order-2 lg:order-1">
-              <div className="card">
+              <div className="home-card">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-900">
-                    🗺️ Explore Posts
+                  <h3 className="text-base sm:text-lg font-semibold">
+                    Explore Posts
                   </h3>
                   <div className="text-xs sm:text-sm text-gray-500">
                     {loadingPosts ? 'Loading...' : `${allPosts.length} posts`}
                   </div>
                 </div>
                 
-                <div className="h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden">
+                <div className="h-[31rem] sm:h-80 lg:h-[38rem] rounded-lg overflow-hidden">
                   <MapView
                     userLocation={location}
                     posts={allPosts}
@@ -191,9 +195,9 @@ const HomePage = () => {
               ${showSidebar ? 'block' : 'hidden lg:block'}
             `}>
               {/* Location Status */}
-              <div className="card">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
-                  📍 Location
+              <div className="home-card">
+                <h3 className="text-base sm:text-lg font-semibold mb-4">
+                  Location
                 </h3>
                 
                 {loading && (
@@ -224,9 +228,9 @@ const HomePage = () => {
               </div>
 
               {/* Stats */}
-              <div className="card">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
-                  📊 Stats
+              <div className="home-card">
+                <h3 className="text-base sm:text-lg font-semibold mb-4">
+                  Stats
                 </h3>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
@@ -251,22 +255,22 @@ const HomePage = () => {
               </div>
 
               {/* Quick Actions */}
-              <div className="card">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
-                  ⚡ Actions
+              <div className="home-card">
+                <h3 className="text-base sm:text-lg font-semibold mb-4">
+                  Actions
                 </h3>
                 <div className="space-y-2">
                   <button
                     onClick={() => setShowPostCreator(true)}
                     className="btn-primary w-full text-sm"
                   >
-                    📸 Create Post
+                    Create Post
                   </button>
                   <a
                     href="/friends"
                     className="btn-secondary w-full text-sm block text-center"
                   >
-                    👥 Friends
+                    Friends
                   </a>
                   <button onClick={logout} className="btn-secondary w-full text-sm lg:hidden">
                     Logout

@@ -114,7 +114,7 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
   }, [posts, onPostClick]);
 
   return (
-    <div className="relative w-full h-[500px]">
+    <div className="relative w-full h-[700px]">
       <div ref={mapContainer} className="w-full h-full rounded-lg" />
       
       {loading && (
