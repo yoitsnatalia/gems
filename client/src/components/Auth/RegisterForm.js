@@ -55,8 +55,8 @@ const RegisterForm = ({ onSwitchToLogin }) => {
 
   return (
     <div className="card w-full max-w-md">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-        Join Ande
+      <h2 className="text-2xl font-bold text-center text-orange-600 mb-6">
+        Join Us!
       </h2>
       
       {error && (
@@ -143,7 +143,7 @@ const RegisterForm = ({ onSwitchToLogin }) => {
         Already have an account?{' '}
         <button 
           onClick={onSwitchToLogin} 
-          className="text-primary-600 hover:text-primary-700 font-medium"
+          className="text-orange-600 hover:text-primary-700 font-bold"
         >
           Login
         </button>

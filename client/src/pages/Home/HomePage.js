@@ -119,12 +119,9 @@ const HomePage = () => {
       {/* Mobile-First Header */}
       <header className="bg-white shadow-sm border-b sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="flex justify-between items-center lg:h-19 sm:h-16">
             <div className="flex items-center">
-              <h1 className="text-lg sm:text-xl font-bold text-gray-900">Ande</h1>
-              <span className="hidden sm:inline ml-4 text-gray-600">
-                Welcome, {user?.username}!
-              </span>
+              <h1 className="text-lg sm:text-xl lg:text-4xl  text-gray-900">ande</h1>
             </div>
             
             <div className="flex items-center space-x-2 sm:space-x-4">
@@ -158,6 +155,7 @@ const HomePage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        
         {showPostCreator ? (
           <PostCreator
             onPostCreated={handlePostCreated}

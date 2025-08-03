@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        gentium: ['"Gentium Basic"', 'serif'],
+      },
       colors: {
         primary: {
           50: '#f0f9ff',
