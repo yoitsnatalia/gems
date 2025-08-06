@@ -8,17 +8,20 @@ import PostCreator from '../../components/Posts/PostCreator';
 import PostCard from '../../components/Posts/PostCard';
 import logo_white from '../../assets/gemstone.png';
 import authBackground from '../../assets/auth.png'; 
+import FriendSearch from '../../components/Friends/FriendsSearch';
+import FriendsList from '../../components/Friends/FriendsList';
 
 const HomePage = () => {
   const { user, logout } = useAuth();
   const { location, error, loading, getCurrentLocation } = useLocation();
-  const [showPostCreator, setShowPostCreator] = useState(false);
+  const [page, setPage] = useState("map");
   const [selectedPost, setSelectedPost] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
   const [friendsPosts, setFriendsPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(false);
   const [unlockedPosts, setUnlockedPosts] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     const loadUserPosts = async () => {
@@ -67,7 +70,8 @@ const HomePage = () => {
 
   const handlePostCreated = (newPost) => {
     setUserPosts(prev => [newPost, ...prev]);
-    setShowPostCreator(false);
+    setPage("map");
+    //setShowPostCreator(false);
   };
 
   const handlePostClick = async (post) => {
@@ -116,6 +120,11 @@ const HomePage = () => {
 
   const allPosts = [...userPosts, ...friendsPosts];
 
+  const handleFriendAdded = () => {
+    // Trigger a refresh of the friends list
+    setRefreshKey(prev => prev + 1);
+  };
+
   return (
     <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${authBackground})` }}>
       {/* Mobile-First Header */}
@@ -138,22 +147,21 @@ const HomePage = () => {
                 📊
               </button>
               
-              <a href="/friends" className="btn-page hidden sm:inline-block">
-                Friends
-              </a>
+              <button onClick={() => setPage("friends")} className="btn-page">
+                <span className="hidden sm:inline">Friends</span>
+              </button>
 
-              <a href="/" className="btn-page hidden sm:inline-block">
+              <button onClick={() => setPage("map")} className="btn-page">
                 Map
-              </a>
+              </button>
               
               <button
-                onClick={() => setShowPostCreator(!showPostCreator)}
+                onClick={() => setPage("post")}
                 className="btn-page"
               >
                 <span className="hidden sm:inline">Post</span>
                 <span className="sm:hidden">📸</span>
               </button>
-              
               
             </div>
 
@@ -170,12 +178,28 @@ const HomePage = () => {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         
-        {showPostCreator ? (
+        { page === "friends" && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Friend Search */}
+            <div>
+              <FriendSearch onFriendAdded={handleFriendAdded} />
+            </div>
+
+            {/* Friends List */}
+            <div>
+              <FriendsList key={refreshKey} />
+            </div>
+          </div>
+        )}
+        
+        { page === "post" && (
           <PostCreator
             onPostCreated={handlePostCreated}
-            onCancel={() => setShowPostCreator(false)}
+            onCancel={() => setPage("map")}
           />
-        ) : (
+        )} 
+        
+        { page === "map" && (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Map Section */}
             <div className="lg:col-span-3 order-2 lg:order-1">
@@ -271,10 +295,10 @@ const HomePage = () => {
                 </h3>
                 <div className="space-y-2">
                   <button
-                    onClick={() => setShowPostCreator(true)}
+                    onClick={() => setPage("post")}
                     className="btn-primary w-full text-sm"
                   >
-                    Create Post
+                    Post
                   </button>
                   <a
                     href="/friends"

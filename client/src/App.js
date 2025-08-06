@@ -37,14 +37,14 @@ function AppRoutes() {
             </ProtectedRoute>
           } 
         />
-        <Route 
+        {/* <Route 
           path="/friends" 
           element={
             <ProtectedRoute>
               <FriendsPage />
             </ProtectedRoute>
           } 
-        />
+        /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
