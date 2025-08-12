@@ -166,7 +166,9 @@ const HomePage = () => {
             </div>
 
             <div className="flex items-center space-x-2 sm:space-x-4">
-              <h1 className="btn-page">Profile</h1>
+            <button onClick={() => setPage("profile")} className="btn-page">
+                <span className="hidden sm:inline">Profile</span>
+              </button>
               <button onClick={logout} className="btn-page hidden sm:inline-block">
                 Logout
               </button>
@@ -178,6 +180,12 @@ const HomePage = () => {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         
+        { page === "profile" && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <h1 className="text-white"> profile </h1> 
+            </div>
+        )}
+
         { page === "friends" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Friend Search */}
