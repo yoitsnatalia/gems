@@ -130,53 +130,79 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${bg})` }}>
-      {/* Mobile-First Header */}
-      <header className=" shadow-sm  sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="flex justify-between items-center lg:h-20 sm:h-16">
-            <div className = "flex items-center gap-2">
-              <img src={logo} alt="Logo" className="h-9 w-auto" />
-              <button onClick={() => setPage("map")} className="text-5xl text-white text-center leading-none">
+      <header className="sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Row */}
+          <div className="flex h-14 sm:h-16 lg:h-20 items-center justify-between">
+            {/* Left: Logo + Title (mobile-first sizing) */}
+            <div className="flex items-center gap-2 min-w-0">
+              <img src={logo} alt="Logo" className="h-8 w-auto sm:h-9" />
+              <button
+                onClick={() => setPage("map")}
+                className="truncate text-2xl sm:text-3xl lg:text-4xl leading-none font-semibold text-white"
+                aria-label="Go to Map"
+              >
                 Gems
               </button>
             </div>
-            
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setShowSidebar(!showSidebar)}
-                className="lg:hidden btn-secondary text-sm"
-              >
-                📊
-              </button>
-              
-              <button onClick={() => setPage("friends")} className="btn-page">
-                <span className={`hidden sm:inline ${ page == "friends" ? "underline underline-offset-4" : "no-underline"}`}>Friends</span>
-              </button>
 
-              <button 
-                onClick={() => setPage("map")} 
-                className="btn-page"
-              >
-                <span className={`hidden sm:inline ${ page == "map" ? "underline underline-offset-4" : "no-underline"}`}>Map</span>
+            {/* Center: Primary nav (hidden on mobile, shown ≥ sm) */}
+            <nav className="hidden sm:flex items-center gap-4">
+              <button onClick={() => setPage("friends")} className="btn-page">
+                <span className={page === "friends" ? "underline underline-offset-4" : "no-underline"}>
+                  Friends
+                </span>
               </button>
-              
+              <button onClick={() => setPage("map")} className="btn-page">
+                <span className={page === "map" ? "underline underline-offset-4" : "no-underline"}>
+                  Map
+                </span>
+              </button>
+              <button onClick={() => setPage("post")} className="btn-page">
+                <span className={page === "post" ? "underline underline-offset-4" : "no-underline"}>
+                  Post
+                </span>
+              </button>
+            </nav>
+
+            {/* Right: Actions */}
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* Mobile quick actions (icons) */}
+              <button
+                onClick={() => { setPage("map"); setShowSidebar(false); }}
+                className="sm:hidden btn-primary"
+                aria-label="Explore Map"
+                title="Map"
+              >
+                Map
+              </button>
               <button
                 onClick={() => setPage("post")}
-                className="btn-page"
+                className="sm:hidden btn-primary"
+                aria-label="Create Post"
+                title="Post"
               >
-                <span className={`hidden sm:inline ${ page == "post" ? "underline underline-offset-4" : "no-underline"}`}>Post</span>
-                <span className="sm:hidden">📸</span>
+                Post
               </button>
-              
-            </div>
-
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <button onClick={() => setPage("profile")} className="btn-page">
-                <span className={`hidden sm:inline ${ page == "profile" ? "underline underline-offset-4" : "no-underline"}`}>Profile</span>
+              <button
+                onClick={() => setPage("profile")}
+                className="btn-page hidden sm:inline-flex"
+              >
+                <span className={page === "profile" ? "underline underline-offset-4" : "no-underline"}>
+                  Profile
+                </span>
               </button>
-              <button onClick={logout} className="btn-page hidden sm:inline-block">
+              <button onClick={logout} className="btn-page hidden sm:inline-flex">
                 Logout
+              </button>
+
+              {/* Mobile menu toggle (only on < lg) */}
+              <button
+                onClick={() => { setPage("map"); setShowSidebar(true); }}
+                className="lg:hidden btn-secondary text-sm"
+                aria-label="Open Menu"
+              >
+                Menu
               </button>
             </div>
           </div>
@@ -187,7 +213,7 @@ const HomePage = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         
         { page === "profile" && (
-          <div className="grid grid-cols-3 gap-6 justify-center items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-center items-stretch">
             
               <div>
                 <Profile user={user} userPosts={userPosts} unlockedPosts={unlockedPosts} />
@@ -226,7 +252,7 @@ const HomePage = () => {
         { page === "map" && (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Map Section */}
-            <div className="lg:col-span-3 order-2 lg:order-1">
+            <div className={`lg:col-span-3 order-2 lg:order-1 ${showSidebar ? 'hidden lg:block' : 'block'}`}>
               <div className="home-card">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-base sm:text-lg font-semibold">
@@ -253,37 +279,7 @@ const HomePage = () => {
               ${showSidebar ? 'block' : 'hidden lg:block'}
             `}>
               {/* Location Status */}
-              <div className="home-card">
-                <h3 className="text-base sm:text-lg font-semibold mb-4">
-                  Location
-                </h3>
-                
-                {loading && (
-                  <div className="flex items-center space-x-2 text-blue-600">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
-                    <span className="text-sm">Getting location...</span>
-                  </div>
-                )}
-                
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                    <p className="text-red-700 font-medium text-sm">Location Error</p>
-                    <p className="text-red-600 text-xs mt-1">{error}</p>
-                    <button onClick={getCurrentLocation} className="btn-primary text-xs mt-2">
-                      Try Again
-                    </button>
-                  </div>
-                )}
-                
-                {location && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                    <p className="text-green-700 text-sm font-medium">Active</p>
-                    <p className="text-green-600 text-xs mt-1">
-                      ±{location.accuracy}m accuracy
-                    </p>
-                  </div>
-                )}
-              </div>
+              
 
               {/* Stats */}
               <div className="home-card">
@@ -320,22 +316,61 @@ const HomePage = () => {
                 </h3>
                 <div className="space-y-2">
                   <button
+                    onClick={() => setPage("profile")}
+                    className="btn-primary w-full text-sm block text-center lg:hidden"
+                  >
+                    Profile
+                  </button>
+                  <button
                     onClick={() => setPage("post")}
                     className="btn-primary w-full text-sm"
                   >
                     Post
                   </button>
-                  <a
-                    href="/friends"
-                    className="btn-secondary w-full text-sm block text-center"
+                  <button
+                    onClick={() => setPage("friends")}
+                    className="btn-primary w-full text-sm block text-center"
                   >
                     Friends
-                  </a>
+                  </button>
                   <button onClick={logout} className="btn-secondary w-full text-sm lg:hidden">
                     Logout
                   </button>
                 </div>
               </div>
+
+              <div className="home-card">
+                <h3 className="text-base sm:text-lg font-semibold mb-4">
+                  Location
+                </h3>
+                
+                {loading && (
+                  <div className="flex items-center space-x-2 text-blue-600">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                    <span className="text-sm">Getting location...</span>
+                  </div>
+                )}
+                
+                {error && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                    <p className="text-red-700 font-medium text-sm">Location Error</p>
+                    <p className="text-red-600 text-xs mt-1">{error}</p>
+                    <button onClick={getCurrentLocation} className="btn-primary text-xs mt-2">
+                      Try Again
+                    </button>
+                  </div>
+                )}
+                
+                {location && (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <p className="text-green-700 text-sm font-medium">Active</p>
+                    <p className="text-green-600 text-xs mt-1">
+                      ±{location.accuracy}m accuracy
+                    </p>
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
         )}
