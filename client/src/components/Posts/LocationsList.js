@@ -43,7 +43,7 @@ const LocationsList = () => {
   return (
     <div className="home-card">
       <h3 className="text-lg font-semibold text-white mb-4">
-        Your Hidden Gems ({posts.length})
+        Location Log ({posts.length})
       </h3>
       
       {error && (

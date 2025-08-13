@@ -290,7 +290,14 @@ const HomePage = () => {
                 <h3 className="text-base sm:text-lg font-semibold mb-4">
                   Stats
                 </h3>
+                
                 <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-lg sm:text-2xl font-bold text-pink-300">
+                      {userPosts.length + unlockedPosts.length}
+                    </div>
+                    <div className="text-sm text-pink-300 font-semibold">Gem Score</div>
+                  </div>
                   <div>
                     <div className="text-lg sm:text-xl font-bold text-white">
                       {userPosts.length}
@@ -303,13 +310,6 @@ const HomePage = () => {
                     </div>
                     <div className="text-xs text-white">Posts I've unlocked</div>
                   </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-bold text-white">
-                      {userPosts.length + unlockedPosts.length}
-                    </div>
-                    <div className="text-xs text-white font-semibold">Gem score</div>
-                  </div>
-                  
                 </div>
               </div>
 
