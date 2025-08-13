@@ -46,7 +46,7 @@ const FriendsList = () => {
   return (
     <div className="card">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        👥 Your Friends ({friends.length})
+        Your Friends ({friends.length})
       </h3>
       
       {error && (
@@ -64,7 +64,7 @@ const FriendsList = () => {
           {friends.map((friend) => (
             <div key={friend.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-semibold">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-green-500 rounded-full flex items-center justify-center text-white font-semibold">
                   {friend.username.charAt(0).toUpperCase()}
                 </div>
                 <div>

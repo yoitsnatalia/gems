@@ -6,10 +6,13 @@ import { friendsService } from '../../services/friends';
 import MapView from '../../components/Map/MapView';
 import PostCreator from '../../components/Posts/PostCreator';
 import PostCard from '../../components/Posts/PostCard';
+import Profile from '../../components/Profile/Profile';
 import logo_white from '../../assets/gemstone.png';
 import authBackground from '../../assets/auth.png'; 
 import FriendSearch from '../../components/Friends/FriendsSearch';
 import FriendsList from '../../components/Friends/FriendsList';
+import LocationsList from '../../components/Posts/LocationsList';
+
 
 const HomePage = () => {
   const { user, logout } = useAuth();
@@ -181,9 +184,19 @@ const HomePage = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         
         { page === "profile" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <h1 className="text-white"> profile </h1> 
+          <div className="grid grid-cols-3 gap-6 justify-center items-stretch">
+            
+              <div>
+                <Profile user={user} userPosts={userPosts} unlockedPosts={unlockedPosts} />
+              </div>
+              <div>
+                <FriendsList key={refreshKey} />
+              </div>
+            
+            <div>
+              <LocationsList key={refreshKey} />
             </div>
+          </div>
         )}
 
         { page === "friends" && (

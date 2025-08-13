@@ -129,11 +129,27 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
         )}
       </div>
 
+      {/* Location Name */}
+      <div className="mb-3">
+          <label htmlFor="location_name" className="block text-sm font-medium text-gray-700 mb-1">
+            Location Name*
+          </label>
+          <input
+            type="text"
+            id="location_name"
+            name="location_name"
+            value={formData.location_name}
+            onChange={(e) => setFormData({ ...formData, location_name: e.target.value })}
+            placeholder="e.g., Golden Gate Park"
+            className="input-field text-sm"
+          />
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Image Upload */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Photo
+            Photo*
           </label>
           
           {!preview ? (
@@ -208,21 +224,7 @@ const PostCreator = ({ onPostCreated, onCancel }) => {
           />
         </div>
 
-        {/* Location Name */}
-        <div>
-          <label htmlFor="location_name" className="block text-sm font-medium text-gray-700 mb-1">
-            Location Name (Optional)
-          </label>
-          <input
-            type="text"
-            id="location_name"
-            name="location_name"
-            value={formData.location_name}
-            onChange={(e) => setFormData({ ...formData, location_name: e.target.value })}
-            placeholder="e.g., Golden Gate Park"
-            className="input-field text-sm"
-          />
-        </div>
+        
 
         {/* Buttons */}
         <div className="grid grid-cols-2 gap-3">
