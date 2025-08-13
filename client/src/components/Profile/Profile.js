@@ -15,7 +15,7 @@ const Profile = ({user, userPosts, unlockedPosts}) => {
           <p className="text-gray-500 text-sm">{user.email}</p>
         </div>
 
-        <h2 className="text-center text-2xl text-green-700">-</h2>
+        <h2 className="text-center text-2xl text-gray-400">--</h2>
 
         <div className="flex flex-col justify-center text-center">
           <h2 className="text-2xl font-semibold text-[#d52985]">Gem Stats</h2>
