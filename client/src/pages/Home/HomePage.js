@@ -7,8 +7,8 @@ import MapView from '../../components/Map/MapView';
 import PostCreator from '../../components/Posts/PostCreator';
 import PostCard from '../../components/Posts/PostCard';
 import Profile from '../../components/Profile/Profile';
-import logo_white from '../../assets/gemstone.png';
-import authBackground from '../../assets/auth.png'; 
+import logo from '../../assets/crystal_white.png';
+import bg from '../../assets/pics.png'; 
 import FriendSearch from '../../components/Friends/FriendsSearch';
 import FriendsList from '../../components/Friends/FriendsList';
 import LocationsList from '../../components/Posts/LocationsList';
@@ -129,16 +129,16 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${authBackground})` }}>
+    <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${bg})` }}>
       {/* Mobile-First Header */}
       <header className=" shadow-sm  sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="flex justify-between items-center lg:h-20 sm:h-16">
             <div className = "flex items-center gap-2">
-              <img src={logo_white} alt="Logo" className="h-9 w-auto" />
-              <h2 className="text-5xl text-white text-center leading-none">
+              <img src={logo} alt="Logo" className="h-9 w-auto" />
+              <button onClick={() => setPage("map")} className="text-5xl text-white text-center leading-none">
                 Gems
-              </h2>
+              </button>
             </div>
             
             <div className="flex items-center space-x-2 sm:space-x-4">

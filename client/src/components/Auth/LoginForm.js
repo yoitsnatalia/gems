@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import logo from '../../assets/logo.png';
-import logo_white from '../../assets/logo_white.png';
 
 const LoginForm = ({ onSwitchToRegister }) => {
   const [formData, setFormData] = useState({

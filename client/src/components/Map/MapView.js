@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import crystal from '../../assets/crystal3.png'; 
+import gem from '../../assets/crystal_pink.png'; 
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -93,7 +93,7 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
       const markerEl = document.createElement('div');
       markerEl.className = 'post-marker cursor-pointer';
       const size = window.innerWidth < 768 ? 'w-10 h-10' : 'w-11 h-11';
-      markerEl.innerHTML = `<img src=${crystal} alt="gem" class="${size} hover:scale-150 transition-transform" />`;
+      markerEl.innerHTML = `<img src=${gem} alt="gem" class="${size} hover:scale-150 transition-transform" />`;
 
       markerEl.addEventListener('click', (e) => {
         e.stopPropagation();
