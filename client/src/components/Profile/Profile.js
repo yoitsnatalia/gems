@@ -1,6 +1,7 @@
-const Profile = ({user, userPosts, unlockedPosts}) => {
-    
 
+import logo from '../../assets/crystal_black.png';
+
+const Profile = ({user, userPosts, unlockedPosts}) => {
     return (
       <div className="card">
         
@@ -13,9 +14,10 @@ const Profile = ({user, userPosts, unlockedPosts}) => {
         <div className="text-center px-6 py-4">
           <h2 className="text-3xl font-semibold text-gray-800">{user.username}</h2>
           <p className="text-gray-500 text-sm">{user.email}</p>
+          
         </div>
 
-        <h2 className="text-center text-2xl text-gray-400">--</h2>
+        <img src={logo} alt="Logo" className="h-8 place-self-center w-auto mx-6 mb-4" />
 
         <div className="flex flex-col justify-center text-center">
           <h2 className="text-2xl font-semibold text-[#d52985]">Gem Stats</h2>
