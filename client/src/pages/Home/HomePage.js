@@ -295,20 +295,21 @@ const HomePage = () => {
                     <div className="text-lg sm:text-xl font-bold text-white">
                       {userPosts.length}
                     </div>
-                    <div className="text-xs text-gray-500">Posts</div>
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-bold text-white">
-                      {friendsPosts.length}
-                    </div>
-                    <div className="text-xs text-gray-500">Friends'</div>
+                    <div className="text-xs text-white">Posts by me</div>
                   </div>
                   <div>
                     <div className="text-lg sm:text-xl font-bold text-white">
                       {unlockedPosts.length}
                     </div>
-                    <div className="text-xs text-gray-500">Total Gems Discovered</div>
+                    <div className="text-xs text-white">Posts I've unlocked</div>
                   </div>
+                  <div>
+                    <div className="text-lg sm:text-xl font-bold text-white">
+                      {userPosts.length + unlockedPosts.length}
+                    </div>
+                    <div className="text-xs text-white font-semibold">Gem score</div>
+                  </div>
+                  
                 </div>
               </div>
 

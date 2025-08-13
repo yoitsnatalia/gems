@@ -20,9 +20,10 @@ const Profile = ({user, userPosts, unlockedPosts}) => {
         <img src={logo} alt="Logo" className="h-8 place-self-center w-auto mx-6 mb-4" />
 
         <div className="flex flex-col justify-center text-center">
-          <h2 className="text-2xl font-semibold text-[#d52985]">Gem Stats</h2>
-          <h2 className="text-xl text-black ">Number Hidden: {userPosts.length}</h2>
-          <h2 className="text-xl text-black ">Number Discovered: {unlockedPosts.length}</h2>
+          <h2 className="text-2xl font-semibold text-black">Gem Stats</h2>
+          <h2 className="text-xl text-[#d52985] font-semibold">Gem Score: {userPosts.length + unlockedPosts.length}</h2>
+          <h2 className="text-lg text-gray-600">Number Hidden: {userPosts.length}</h2>
+          <h2 className="text-lg text-gray-600">Number Discovered: {unlockedPosts.length}</h2>
         </div>
         
       </div>
