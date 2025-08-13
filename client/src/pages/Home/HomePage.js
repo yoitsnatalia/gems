@@ -151,26 +151,29 @@ const HomePage = () => {
               </button>
               
               <button onClick={() => setPage("friends")} className="btn-page">
-                <span className="hidden sm:inline">Friends</span>
+                <span className={`hidden sm:inline ${ page == "friends" ? "underline underline-offset-4" : "no-underline"}`}>Friends</span>
               </button>
 
-              <button onClick={() => setPage("map")} className="btn-page">
-                Map
+              <button 
+                onClick={() => setPage("map")} 
+                className="btn-page"
+              >
+                <span className={`hidden sm:inline ${ page == "map" ? "underline underline-offset-4" : "no-underline"}`}>Map</span>
               </button>
               
               <button
                 onClick={() => setPage("post")}
                 className="btn-page"
               >
-                <span className="hidden sm:inline">Post</span>
+                <span className={`hidden sm:inline ${ page == "post" ? "underline underline-offset-4" : "no-underline"}`}>Post</span>
                 <span className="sm:hidden">📸</span>
               </button>
               
             </div>
 
             <div className="flex items-center space-x-2 sm:space-x-4">
-            <button onClick={() => setPage("profile")} className="btn-page">
-                <span className="hidden sm:inline">Profile</span>
+              <button onClick={() => setPage("profile")} className="btn-page">
+                <span className={`hidden sm:inline ${ page == "profile" ? "underline underline-offset-4" : "no-underline"}`}>Profile</span>
               </button>
               <button onClick={logout} className="btn-page hidden sm:inline-block">
                 Logout
