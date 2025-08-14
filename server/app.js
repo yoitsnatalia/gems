@@ -17,7 +17,9 @@ const corsOptions = {
     'http://localhost:3000', // Development
     'https://rococo-cheesecake-9f09f5.netlify.app' // Production
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 // Middleware
