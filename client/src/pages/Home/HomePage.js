@@ -74,7 +74,6 @@ const HomePage = () => {
   const handlePostCreated = (newPost) => {
     setUserPosts(prev => [newPost, ...prev]);
     setPage("map");
-    //setShowPostCreator(false);
   };
 
   const handlePostClick = async (post) => {
@@ -139,7 +138,7 @@ const HomePage = () => {
               <img src={logo} alt="Logo" className="h-8 w-auto sm:h-9" />
               <button
                 onClick={() => setPage("map")}
-                className="truncate text-2xl sm:text-3xl lg:text-4xl leading-none font-semibold text-white"
+                className="truncate text-2xl sm:text-3xl lg:text-4xl leading-none text-white"
                 aria-label="Go to Map"
               >
                 Gems
