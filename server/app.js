@@ -14,8 +14,8 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    'http://localhost:3000'//, // Development
-    //'https://your-app-name.netlify.app' // Production (update this with your actual Netlify URL)
+    'http://localhost:3000', // Development
+    'https://rococo-cheesecake-9f09f5.netlify.app/api' // Production
   ],
   credentials: true
 };
