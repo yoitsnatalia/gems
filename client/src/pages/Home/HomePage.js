@@ -130,7 +130,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${bg})` }}>
-      <header className="sticky top-0 z-40">
+      <header className="top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Row */}
           <div className="flex h-14 sm:h-16 lg:h-20 items-center justify-between">
