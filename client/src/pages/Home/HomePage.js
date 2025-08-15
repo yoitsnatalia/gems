@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useLocation } from '../../hooks/useLocation';
+import { useDemoLocation } from '../../hooks/useDemoLocation';
 import { postsService } from '../../services/posts';
 import { friendsService } from '../../services/friends';
 import MapView from '../../components/Map/MapView';
@@ -17,6 +18,7 @@ import LocationsList from '../../components/Posts/LocationsList';
 const HomePage = () => {
   const { user, logout } = useAuth();
   const { location, error, loading, getCurrentLocation } = useLocation();
+  const [userLocation, setUserLocation] = useState(location);
   const [page, setPage] = useState("map");
   const [selectedPost, setSelectedPost] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
@@ -25,6 +27,13 @@ const HomePage = () => {
   const [unlockedPosts, setUnlockedPosts] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
+
+  // Auto-set demo location
+  useDemoLocation(setUserLocation);
+
+  // Use userLocation instead of location for API calls
+  const effectiveLocation = userLocation || location;
+  
 
   useEffect(() => {
     const loadUserPosts = async () => {
