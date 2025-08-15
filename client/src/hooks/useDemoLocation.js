@@ -8,8 +8,8 @@ export const useDemoLocation = (setLocation) => {
     // If demo user, auto-set San Francisco location
     if (user?.email === 'demo@gems.app') {
       setLocation({
-        latitude: 37.7749,
-        longitude: -122.4194,
+        latitude: 33.8121,
+        longitude: -117.9190,
         accuracy: 10
       });
     }
