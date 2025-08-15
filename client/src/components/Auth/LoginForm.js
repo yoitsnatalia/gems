@@ -39,7 +39,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
     
     try {
       await login({
-        email: 'demo@ande.app',
+        email: 'demo@gems.app',
         password: 'demo123'
       });
     } catch (error) {
@@ -123,7 +123,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
           </h2>
 
           <div className="space-y-7 align-center">
-            
+
             <div className="text-sm text-blue-700 mb-3 space-y-1">
               <div>📍 <strong>Your location:</strong> San Francisco, CA</div>
               <div>🔓 <strong>Nearby posts:</strong> 3 posts within 100m to unlock</div>
