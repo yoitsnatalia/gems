@@ -48,13 +48,13 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    if (location) {
+    if (effectiveLocation) {
       const loadFriendsPosts = async () => {
         setLoadingPosts(true);
         try {
           const result = await friendsService.getFriendsPosts(
-            location.latitude,
-            location.longitude,
+            effectivelLcation.latitude,
+            effectiveLocation.longitude,
             5000
           );
           setFriendsPosts(result.posts);
@@ -66,7 +66,7 @@ const HomePage = () => {
       };
       loadFriendsPosts();
     }
-  }, [location]);
+  }, [effectiveLocation]);
 
   useEffect(() => {
     const loadUnlockedPosts = async () => {
@@ -86,7 +86,7 @@ const HomePage = () => {
   };
 
   const handlePostClick = async (post) => {
-    if (!location) {
+    if (!effectiveLocation) {
       setSelectedPost(post);
       return;
     }
@@ -94,8 +94,8 @@ const HomePage = () => {
     try {
       const result = await postsService.checkUnlockEligibility(
         post.id,
-        location.latitude,
-        location.longitude
+        effectiveLocation.latitude,
+        effectiveLocation.longitude
       );
       
       const isAlreadyUnlocked = unlockedPosts.some(unlock => unlock.post_id === post.id);
@@ -113,13 +113,13 @@ const HomePage = () => {
   };
 
   const handleUnlockPost = async (postId) => {
-    if (!location) return;
+    if (!effectiveLocation) return;
 
     try {
       const result = await friendsService.unlockPost(
         postId,
-        location.latitude,
-        location.longitude
+        effectiveLocation.latitude,
+        effectiveLocation.longitude
       );
       
       setUnlockedPosts(prev => [...prev, result.unlock]);
@@ -273,7 +273,7 @@ const HomePage = () => {
                 
                 <div className="h-[31rem] sm:h-80 lg:h-[38rem] rounded-lg border-2 border-gray-700 overflow-hidden">
                   <MapView
-                    userLocation={location}
+                    userLocation={effectiveLocation}
                     posts={allPosts}
                     onPostClick={handlePostClick}
                   />
@@ -369,11 +369,11 @@ const HomePage = () => {
                   </div>
                 )}
                 
-                {location && (
+                {effectiveLocation && (
                   <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                     <p className="text-green-700 text-sm font-medium">Active</p>
                     <p className="text-green-600 text-xs mt-1">
-                      ±{location.accuracy}m accuracy
+                      ±{effectiveLocation.accuracy}m accuracy
                     </p>
                   </div>
                 )}
