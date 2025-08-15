@@ -12,8 +12,18 @@ const friendsRoutes = require('./routes/friends');
 
 const app = express();
 
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', // Development
+    'https://rococo-cheesecake-9f09f5.netlify.app' // Production
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
