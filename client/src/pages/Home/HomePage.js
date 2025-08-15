@@ -53,7 +53,7 @@ const HomePage = () => {
         setLoadingPosts(true);
         try {
           const result = await friendsService.getFriendsPosts(
-            effectivelLcation.latitude,
+            effectiveLocation.latitude,
             effectiveLocation.longitude,
             5000
           );
