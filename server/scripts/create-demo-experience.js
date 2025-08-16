@@ -3,6 +3,9 @@ const bcrypt = require('bcryptjs');
 
 const demoData = {
   users: [
+    { username: 'gym_user', email: 'gym@demo.gems.app', password: 'demo123' },
+    { username: 'rome_user', email: 'rome@demo.gems.app', password: 'demo123' },
+    { username: 'disney_user', email: 'disney@demo.gems.app', password: 'demo123' },
     { username: 'betty', email: 'betty@demo.gems.app', password: 'demo123' },
     { username: 'james', email: 'james@demo.gems.app', password: 'demo123' },
     { username: 'inez', email: 'inez@demo.gems.app', password: 'demo123' },
