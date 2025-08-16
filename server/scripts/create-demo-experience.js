@@ -162,7 +162,7 @@ const demoData = {
     {
         username: 'betty',
         caption: 'Leg day demolished 🏋️',
-        latitude: 33.6976,
+        latitude: 33.6977,
         longitude: -117.7405,
         location_name: 'LA Fitness',
         image_url: 'https://images.unsplash.com/photo-1584863231364-2edc166de576?w=800&h=600&fit=crop&crop=center'
@@ -170,7 +170,7 @@ const demoData = {
     {
         username: 'james',
         caption: 'Hit a PR today!',
-        latitude: 33.6983,
+        latitude: 33.6978,
         longitude: -117.7404,
         location_name: 'LA Fitness',
         image_url: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&h=600&fit=crop&crop=center'
@@ -178,8 +178,8 @@ const demoData = {
     {
         username: 'inez',
         caption: 'Forgot my airpods today :( hey, but the gym music was pretty fire.',
-        latitude: 33.6974,
-        longitude: -117.7402,
+        latitude: 33.6978,
+        longitude: -117.7404,
         location_name: "LA Fitness",
         image_url: 'https://images.unsplash.com/photo-1603077492579-39ff927823db?w=800&h=600&fit=crop&crop=center'
     },
