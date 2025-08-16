@@ -84,7 +84,80 @@ const demoData = {
         longitude: -117.9193,
         location_name: 'Dole Whip',
         image_url: 'https://images.unsplash.com/photo-1564507973526-cc6a411f8307?w=800&h=600&fit=crop&crop=center'
-    }
+    },
+    // Rome
+    {
+        username: 'betty',
+        caption: 'I can\'t even comprehend how old this is... actual chills.',
+        latitude: 41.8986,
+        longitude: 12.4768,
+        location_name: 'Pantheon',
+        image_url: 'https://source.unsplash.com/1200x800/?pantheon,rome'
+    },
+    {
+        username: 'betty',
+        caption: 'Carbonara before sightseeing = elite strategy.',
+        latitude: 41.8988,
+        longitude: 12.4766,
+        location_name: 'Armando al Pantheon (Trattoria)',
+        image_url: 'https://source.unsplash.com/1200x800/?roman-pasta,rome'
+    },
+    {
+        username: 'betty',
+        caption: 'Cappuccino stop!',
+        latitude: 41.8991,
+        longitude: 12.4777,
+        location_name: "La Casa del Caffè Tazza d'Oro",
+        image_url: 'https://source.unsplash.com/1200x800/?espresso,rome'
+    },
+    {
+        username: 'james',
+        caption: 'When in Rome… stand amazed.',
+        latitude: 41.8902,
+        longitude: 12.4922,
+        location_name: 'Colosseum',
+        image_url: 'https://source.unsplash.com/1200x800/?colosseum,rome'
+    },
+    {
+        username: 'james',
+        caption: 'Coin tossed, wish made. Gelato time.',
+        latitude: 41.9009,
+        longitude: 12.4833,
+        location_name: 'Trevi Fountain',
+        image_url: 'https://source.unsplash.com/1200x800/?trevi-fountain,rome'
+    },
+    {
+        username: 'james',
+        caption: 'Evening strolls and baroque fountains for days.',
+        latitude: 41.8992,
+        longitude: 12.4731,
+        location_name: 'Piazza Navona',
+        image_url: 'https://source.unsplash.com/1200x800/?piazza-navona,rome'
+    },
+    {
+        username: 'inez',
+        caption: 'Steps climbed. Espresso secured.',
+        latitude: 41.9059,
+        longitude: 12.4823,
+        location_name: 'Spanish Steps (Piazza di Spagna)',
+        image_url: 'https://source.unsplash.com/1200x800/?spanish-steps,rome'
+    },
+    {
+        username: 'inez',
+        caption: 'Golden hour across the Tiber hits different.',
+        latitude: 41.9039,
+        longitude: 12.4663,
+        location_name: 'Castel Sant’Angelo',
+        image_url: 'https://source.unsplash.com/1200x800/?castel-sant-angelo,rome'
+    },
+    {
+        username: 'inez',
+        caption: 'Cobblestones, ivy, and trattoria chatter.',
+        latitude: 41.8896,
+        longitude: 12.471,
+        location_name: 'Trastevere',
+        image_url: 'https://source.unsplash.com/1200x800/?trastevere,rome'
+    }  
   ]
 };
 
