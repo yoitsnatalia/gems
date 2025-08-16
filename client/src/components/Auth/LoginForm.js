@@ -6,7 +6,10 @@ const LoginForm = ({ onSwitchToRegister }) => {
     email: '',
     password: ''
   });
-  const [loading, setLoading] = useState(false);
+  const [loadingLogIn, setLoadingLogIn] = useState(false);
+  const [loadingDisney, setLoadingDisney] = useState(false);
+  const [loadingRome, setLoadingRome] = useState(false);
+  const [loadingGym, setLoadingGym] = useState(false);
   const [error, setError] = useState('');
 
   const { login } = useAuth();
@@ -20,32 +23,59 @@ const LoginForm = ({ onSwitchToRegister }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoadingLogIn(true);
     setError('');
-
+    
     try {
       await login(formData);
       // Redirect will happen automatically via AuthProvider
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed');
     } finally {
-      setLoading(false);
+      setLoadingLogIn(false);
     }
   };
 
-  const handleDemoLogin = async () => {
-    setLoading(true);
-    setError('');
+  const handleDemoLogin = async (area) => {
     
-    try {
-      await login({
-        email: 'demo@gems.app',
-        password: 'demo123'
-      });
-    } catch (error) {
-      setError('Demo login failed');
-    } finally {
-      setLoading(false);
+    setError('');
+    console.log(area);
+    if (area === 'disney') {
+      setLoadingDisney(true);
+      try {
+        await login({
+          email: 'disney@demo.gems.app',
+          password: 'disney123'
+        });
+      } catch (error) {
+        setError('Demo login failed');
+      } finally {
+        setLoadingDisney(false);
+      }
+    } else if (area === 'rome') {
+      try {
+        setLoadingRome(true);
+        await login({
+          email: 'rome@demo.gems.app',
+          password: 'rome123'
+        });
+      } catch (error) {
+        setError('Demo login failed');
+      } finally {
+        setLoadingRome(false);
+      }
+    } else if (area === 'gym') {
+      setLoadingGym(true);
+      try {
+        await login({
+          email: 'gym@demo.gems.app',
+          password: 'gym123'
+        });
+      } catch (error) {
+        setError('Demo login failed');
+      } finally {
+        setLoadingGym(false);
+      }
     }
   };
 
@@ -98,10 +128,10 @@ const LoginForm = ({ onSwitchToRegister }) => {
 
           <button 
             type="submit" 
-            disabled={loading} 
+            disabled={loadingLogIn} 
             className="btn-primary w-full"
           >
-            {loading ? 'Logging in...' : 'Login'}
+            {loadingLogIn ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
@@ -118,35 +148,55 @@ const LoginForm = ({ onSwitchToRegister }) => {
 
         {/* Enhanced Demo Section */}
       <div className="card w-full max-w-md">
-          <h2 className="text-2xl font-bold text-orange-600 text-center mb-9">
+          <h2 className="text-2xl font-bold text-orange-600 text-center mb-5">
             Demo
           </h2>
 
+          <p className="text-xs text-blue-600 mt-2 text-center mb-6">
+            No signup required • Instant access • Pre-loaded data
+          </p>
+
           <div className="space-y-7 align-center">
 
-            <div className="text-sm text-blue-700 mb-3 space-y-1">
-              <div>📍 <strong>Your location:</strong> San Francisco, CA</div>
-              <div>🔓 <strong>Nearby posts:</strong> 3 posts within 100m to unlock</div>
-              <div>🌎 <strong>Global posts:</strong> Friends in Paris, Tokyo, NYC, London</div>
-              <div>👥 <strong>Friends:</strong> 5 demo users with posts worldwide</div>
+            <div>
+              <button 
+                onClick={() => {     
+                    handleDemoLogin('disney'); 
+                }}
+                disabled={loadingDisney}
+                className="btn-secondary w-full text-md"
+                >
+                  {loadingDisney ? 'Loading Demo...' : 'Send me to Disneyland'}
+              </button>
+            </div>
+            <div>
+              <button 
+                onClick={() => {
+                  handleDemoLogin('rome');
+                }}
+                disabled={loadingRome}
+                className="btn-secondary w-full text-md"
+                >
+                  {loadingRome ? 'Loading Demo...' : 'Send me to Rome'}
+              </button>
             </div>
 
             <div>
               <button 
-                onClick={handleDemoLogin}
-                disabled={loading}
+                onClick={() => {
+                  handleDemoLogin('gym');
+                }}
+                disabled={loadingGym}
                 className="btn-secondary w-full text-md"
                 >
-                  {loading ? 'Loading Demo...' : 'Start Demo Experience'}
+                  {loadingGym ? 'Loading Demo...' : 'Send me to a gym'}
               </button>
             </div>
         
         </div>
         
         
-        <p className="text-xs text-blue-600 mt-2 text-center">
-          No signup required • Instant access • Pre-loaded data
-        </p>
+        
       </div>
       
     </div>
