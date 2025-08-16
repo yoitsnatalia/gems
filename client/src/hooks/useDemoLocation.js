@@ -14,8 +14,8 @@ export const useDemoLocation = (setLocation) => {
         });
     } else if (user?.email === 'rome@demo.gems.app') {
         setLocation({
-            latitude: 41.8967,
-            longitude: 12.4822,
+            latitude: 41.8991,
+            longitude: 12.4770,
             accuracy: 10
         });
     } else if (user?.email === 'gym@demo.gems.app') {
