@@ -104,11 +104,11 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Cappuccino stop!',
+        caption: 'Mandatory gelato stop!',
         latitude: 41.8991,
         longitude: 12.4777,
-        location_name: "La Casa del Caffè Tazza d'Oro",
-        image_url: 'https://images.unsplash.com/photo-1702132341930-1813b0a0ea31?w=800&h=600&fit=crop&crop=center'
+        location_name: "La Gelateria",
+        image_url: 'https://images.unsplash.com/photo-1602532769069-0e856a643e7d?w=800&h=600&fit=crop&crop=center'
     },
     {
         username: 'betty',
@@ -157,7 +157,80 @@ const demoData = {
         longitude: 12.471,
         location_name: 'Trastevere',
         image_url: 'https://images.unsplash.com/photo-1569230516306-5a8cb5586399?w=800&h=600&fit=crop&crop=center'
-    }  
+    },
+    // gym
+    {
+        username: 'betty',
+        caption: 'Leg day demolished 🏋️',
+        latitude: 33.6976,
+        longitude: -117.7405,
+        location_name: 'LA Fitness',
+        image_url: 'https://images.unsplash.com/photo-1584863231364-2edc166de576?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Hit a PR today!',
+        latitude: 33.6983,
+        longitude: -117.7404,
+        location_name: 'LA Fitness',
+        image_url: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'Forgot my airpods today :( hey, but the gym music was pretty fire.',
+        latitude: 33.6974,
+        longitude: -117.7402,
+        location_name: "LA Fitness",
+        image_url: 'https://images.unsplash.com/photo-1603077492579-39ff927823db?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'Can never go wrong with a footlong flatbread.',
+        latitude: 33.6980,
+        longitude: -117.7409,
+        location_name: 'Subway',
+        image_url: 'https://images.unsplash.com/photo-1525980978611-a89001322e01?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Cava will always have a ~pita~ my heart <3',
+        latitude: 33.6981,
+        longitude: -117.7411,
+        location_name: 'Cava',
+        image_url: 'https://images.unsplash.com/photo-1612390649890-9498b83d445c?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Panera is my second home.',
+        latitude: 33.6976,
+        longitude: -117.7410,
+        location_name: 'Panera Bread',
+        image_url: 'https://images.unsplash.com/photo-1720026664794-9f2909cda2fa?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'Stocked up on the essentials.',
+        latitude: 33.6983,
+        longitude: -117.7429,
+        location_name: 'Trader Joe\'s',
+        image_url: 'https://images.unsplash.com/photo-1736551944714-f4f5e04288f1?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'I love Chipotle.',
+        latitude: 33.6984,
+        longitude: -117.7411,
+        location_name: 'Chipotle',
+        image_url: 'https://images.unsplash.com/photo-1730817403334-d723c05591e6?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'Daily Boba aquired.',
+        latitude: 33.6977,
+        longitude: -117.7410,
+        location_name: 'Boba Shop',
+        image_url: 'https://images.unsplash.com/photo-1636737187581-f25682019be7?w=800&h=600&fit=crop&crop=center'
+    }, 
   ]
 };
 
