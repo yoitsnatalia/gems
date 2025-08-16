@@ -144,23 +144,23 @@ const createDemoExperience = async () => {
     console.log('✅ Demo posts created globally');
 
     // Create friendships (demo user is friends with everyone)
-    const users = await pool.query('SELECT id FROM users WHERE email LIKE $1', ['%@demo.gems.app']);
-    const demoUser = await pool.query('SELECT id FROM users WHERE email = $1', ['demo@gems.app']);
+    // const users = await pool.query('SELECT id FROM users WHERE email LIKE $1', ['%@demo.gems.app']);
+    // const demoUser = await pool.query('SELECT id FROM users WHERE email = $1', ['demo@gems.app']);
     
-    if (demoUser.rows.length > 0) {
-      for (const user of users.rows) {
-        if (user.id !== demoUser.rows[0].id) {
-          const [smallerId, largerId] = demoUser.rows[0].id < user.id ? 
-            [demoUser.rows[0].id, user.id] : [user.id, demoUser.rows[0].id];
+    // if (demoUser.rows.length > 0) {
+    //   for (const user of users.rows) {
+    //     if (user.id !== demoUser.rows[0].id) {
+    //       const [smallerId, largerId] = demoUser.rows[0].id < user.id ? 
+    //         [demoUser.rows[0].id, user.id] : [user.id, demoUser.rows[0].id];
           
-          await pool.query(`
-            INSERT INTO friendships (user1_id, user2_id, status)
-            VALUES ($1, $2, 'accepted')
-          `, [smallerId, largerId]);
-        }
-      }
-    }
-    console.log('✅ Demo friendships created');
+    //       await pool.query(`
+    //         INSERT INTO friendships (user1_id, user2_id, status)
+    //         VALUES ($1, $2, 'accepted')
+    //       `, [smallerId, largerId]);
+    //     }
+    //   }
+    // }
+    // console.log('✅ Demo friendships created');
 
     await pool.end();
     console.log('🎉 Global demo experience ready!');
