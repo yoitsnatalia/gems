@@ -113,7 +113,7 @@ const createDemoExperience = async () => {
     console.log('✅ Demo users created');
 
     // Create all posts (nearby + SF + international)
-    const allPosts = [...demoData.nearbyPosts, ...demoData.sfPosts, ...demoData.internationalPosts];
+    const allPosts = [...demoData.internationalPosts];
     
     for (const postData of allPosts) {
       const userResult = await pool.query(
