@@ -45,7 +45,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
       try {
         await login({
           email: 'disney@demo.gems.app',
-          password: 'disney123'
+          password: 'demo123'
         });
       } catch (error) {
         setError('Demo login failed');
@@ -57,7 +57,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
         setLoadingRome(true);
         await login({
           email: 'rome@demo.gems.app',
-          password: 'rome123'
+          password: 'demo123'
         });
       } catch (error) {
         setError('Demo login failed');
@@ -69,7 +69,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
       try {
         await login({
           email: 'gym@demo.gems.app',
-          password: 'gym123'
+          password: 'demo123'
         });
       } catch (error) {
         setError('Demo login failed');
