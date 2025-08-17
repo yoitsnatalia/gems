@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import gem from '../../assets/crystal_pink.png'; 
+import logo from '../../assets/crystal_blue.png';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
-const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
+const MapView = ({ user, userLocation, posts = [], onPostClick, onMapClick }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -93,7 +94,13 @@ const MapView = ({ userLocation, posts = [], onPostClick, onMapClick }) => {
       const markerEl = document.createElement('div');
       markerEl.className = 'post-marker cursor-pointer';
       const size = window.innerWidth < 768 ? 'w-10 h-10' : 'w-11 h-11';
-      markerEl.innerHTML = `<img src=${gem} alt="gem" class="${size} hover:scale-150 transition-transform" />`;
+      
+      if (post.user_id === user.id) {
+        markerEl.innerHTML = `<img src=${logo} alt="gem" class="${size} hover:scale-150 transition-transform" />`;
+      } else {
+        markerEl.innerHTML = `<img src=${gem} alt="gem" class="${size} hover:scale-150 transition-transform" />`;
+      }
+      
 
       markerEl.addEventListener('click', (e) => {
         e.stopPropagation();

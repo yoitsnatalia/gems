@@ -273,6 +273,7 @@ const HomePage = () => {
                 
                 <div className="h-[31rem] sm:h-80 lg:h-[38rem] rounded-lg border-2 border-gray-700 overflow-hidden">
                   <MapView
+                    user={user}
                     userLocation={effectiveLocation}
                     posts={allPosts}
                     onPostClick={handlePostClick}
