@@ -3,9 +3,9 @@ const bcrypt = require('bcryptjs');
 
 const demoData = {
   users: [
-    { username: 'gym_user', email: 'gym@demo.gems.app', password: 'demo123' },
-    { username: 'rome_user', email: 'rome@demo.gems.app', password: 'demo123' },
-    { username: 'disney_user', email: 'disney@demo.gems.app', password: 'demo123' },
+    { username: 'emma_gym', email: 'gym@demo.gems.app', password: 'demo123' },
+    { username: 'emma_rome', email: 'rome@demo.gems.app', password: 'demo123' },
+    { username: 'emma_disney', email: 'disney@demo.gems.app', password: 'demo123' },
     { username: 'betty', email: 'betty@demo.gems.app', password: 'demo123' },
     { username: 'james', email: 'james@demo.gems.app', password: 'demo123' },
     { username: 'inez', email: 'inez@demo.gems.app', password: 'demo123' },
@@ -13,6 +13,14 @@ const demoData = {
 
   internationalPosts: [
     // Disney Posts
+    {
+        username: 'emma_disney',
+        caption: 'I\'m so ready.',
+        latitude: 33.8120,
+        longitude: -117.9185,
+        location_name: 'Sleeping Beauty\'s Castle',
+        image_url: 'https://images.unsplash.com/photo-1662669764528-a03e163c9d8a?w=800&h=600&fit=crop&crop=center'
+    },
     {
       username: 'betty',
       caption: 'The most magical view :)',
@@ -24,9 +32,9 @@ const demoData = {
     {
       username: 'betty',
       caption: 'I\'ll never get over these Mickey shaped waffles, omg.',
-      latitude: 33.8110,
-      longitude: -117.9190,
-      location_name: 'Carnation Cafe',
+      latitude: 33.8117,
+      longitude: -117.9186,
+      location_name: 'Minne & Friends - Breakfast in the Park',
       image_url: 'https://images.unsplash.com/photo-1565006111725-706899ffbb7f?w=800&h=600&fit=crop&crop=center'
     },
     {
@@ -63,7 +71,7 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Made it to Batuu!!',
+        caption: 'made it to batuu!!',
         latitude: 33.8146,
         longitude: -117.9210,
         location_name: 'Galaxy\'s Edge',
@@ -71,7 +79,7 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Yeti jump-scare count: 3.',
+        caption: 'yeti jump-scare count: 3.',
         latitude: 33.8131,
         longitude: -117.9175,
         location_name: 'Matterhorn',
@@ -79,13 +87,21 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'So, I\'ve had three of these and counting.',
+        caption: 'so, i\'ve had three of these and counting.',
         latitude: 33.8118,
         longitude: -117.9193,
         location_name: 'Dole Whip',
         image_url: 'https://images.unsplash.com/photo-1564507973526-cc6a411f8307?w=800&h=600&fit=crop&crop=center'
     },
     // Rome
+    {
+        username: 'emma_rome',
+        caption: 'The best tiramisu I\'ve ever had. 1000/5 stars.',
+        latitude: 41.8995,
+        longitude: 12.4765,
+        location_name: 'Osteria Del Gallo',
+        image_url: 'https://images.unsplash.com/photo-1647943766693-a9ce5760e50c?w=800&h=600&fit=crop&crop=center'
+    },
     {
         username: 'betty',
         caption: 'I can\'t even comprehend how old this is... actual chills.',
@@ -104,7 +120,7 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Mandatory gelato stop!',
+        caption: 'mandatory gelato stop!',
         latitude: 41.8991,
         longitude: 12.4777,
         location_name: "La Gelateria",
@@ -144,7 +160,7 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Golden hour across the Tiber hits different.',
+        caption: 'golden hour across the tiber hits different.',
         latitude: 41.9039,
         longitude: 12.4663,
         location_name: 'Castel Sant\'Angelo',
@@ -152,13 +168,21 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Cobblestones, ivy, and trattoria chatter.',
+        caption: 'cobblestones, ivy, and trattoria chatter.',
         latitude: 41.8896,
         longitude: 12.471,
         location_name: 'Trastevere',
         image_url: 'https://images.unsplash.com/photo-1569230516306-5a8cb5586399?w=800&h=600&fit=crop&crop=center'
     },
     // gym
+    {
+        username: 'emma_gym',
+        caption: 'Pre-workout matcha!!',
+        latitude: 33.6972,
+        longitude: -117.7408,
+        location_name: 'Starbucks',
+        image_url: 'https://images.unsplash.com/photo-1720294211016-aaf67dddd5dc?w=800&h=600&fit=crop&crop=center'
+    },
     {
         username: 'betty',
         caption: 'Leg day demolished 🏋️',
@@ -169,7 +193,7 @@ const demoData = {
     },
     {
         username: 'james',
-        caption: 'Hit a PR today!',
+        caption: 'Hit a PR today...',
         latitude: 33.6978,
         longitude: -117.7404,
         location_name: 'LA Fitness',
@@ -177,8 +201,8 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Forgot my airpods today :( hey, but the gym music was pretty fire.',
-        latitude: 33.6978,
+        caption: 'forgot my airpods today :( hey, but the gym music was pretty fire.',
+        latitude: 33.6980,
         longitude: -117.7404,
         location_name: "LA Fitness",
         image_url: 'https://images.unsplash.com/photo-1603077492579-39ff927823db?w=800&h=600&fit=crop&crop=center'
@@ -217,7 +241,7 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'I love Chipotle.',
+        caption: 'i love chipotle.',
         latitude: 33.6984,
         longitude: -117.7411,
         location_name: 'Chipotle',
@@ -225,7 +249,7 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'Daily Boba aquired.',
+        caption: 'daily boba aquired.',
         latitude: 33.6977,
         longitude: -117.7410,
         location_name: 'Boba Shop',
