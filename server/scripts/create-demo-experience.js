@@ -18,7 +18,7 @@ const demoData = {
         caption: 'I\'m so ready.',
         latitude: 33.8120,
         longitude: -117.9185,
-        location_name: 'Sleeping Beauty\'s Castle',
+        location_name: 'Astro Orbitor',
         image_url: 'https://images.unsplash.com/photo-1662669764528-a03e163c9d8a?w=800&h=600&fit=crop&crop=center'
     },
     {
@@ -34,7 +34,7 @@ const demoData = {
       caption: 'I\'ll never get over these Mickey shaped waffles, omg.',
       latitude: 33.8117,
       longitude: -117.9186,
-      location_name: 'Minne & Friends - Breakfast in the Park',
+      location_name: 'Minnie & Friends - Breakfast in the Park',
       image_url: 'https://images.unsplash.com/photo-1565006111725-706899ffbb7f?w=800&h=600&fit=crop&crop=center'
     },
     {
@@ -87,11 +87,11 @@ const demoData = {
     },
     {
         username: 'inez',
-        caption: 'so, i\'ve had three of these and counting.',
+        caption: 'so, i\'ve had three of these... and counting.',
         latitude: 33.8118,
-        longitude: -117.9193,
+        longitude: -117.9195,
         location_name: 'Dole Whip',
-        image_url: 'https://images.unsplash.com/photo-1564507973526-cc6a411f8307?w=800&h=600&fit=crop&crop=center'
+        image_url: 'https://images.unsplash.com/photo-1647738876160-c5c1b664150e?w=800&h=600&fit=crop&crop=center'
     },
     // Rome
     {
@@ -105,25 +105,25 @@ const demoData = {
     {
         username: 'betty',
         caption: 'I can\'t even comprehend how old this is... actual chills.',
-        latitude: 41.8986,
-        longitude: 12.4768,
+        latitude: 41.8991,
+        longitude: 12.4767,
         location_name: 'Pantheon',
         image_url: 'https://images.unsplash.com/photo-1714687398943-3edbfd43b830?w=800&h=600&fit=crop&crop=center'
     },
     {
         username: 'james',
         caption: 'Carbonara before sightseeing = elite strategy.',
-        latitude: 41.8988,
-        longitude: 12.4766,
+        latitude: 41.8990,
+        longitude: 12.4762,
         location_name: 'Armando al Pantheon (Trattoria)',
         image_url: 'https://images.unsplash.com/photo-1686199859328-7660f648e70d?w=800&h=600&fit=crop&crop=center'
     },
     {
         username: 'inez',
         caption: 'mandatory gelato stop!',
-        latitude: 41.8991,
-        longitude: 12.4777,
-        location_name: "La Gelateria",
+        latitude: 41.8994,
+        longitude: 12.4775,
+        location_name: "Gelateria",
         image_url: 'https://images.unsplash.com/photo-1602532769069-0e856a643e7d?w=800&h=600&fit=crop&crop=center'
     },
     {
