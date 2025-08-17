@@ -166,7 +166,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
                 disabled={loadingDisney}
                 className="btn-secondary w-full text-md"
                 >
-                  {loadingDisney ? 'Loading Demo...' : 'Send me to Disneyland'}
+                  {loadingDisney ? 'Loading Demo...' : 'Send me to Disneyland 🏰'}
               </button>
             </div>
             <div>
@@ -177,7 +177,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
                 disabled={loadingRome}
                 className="btn-secondary w-full text-md"
                 >
-                  {loadingRome ? 'Loading Demo...' : 'Send me to Rome'}
+                  {loadingRome ? 'Loading Demo...' : 'Send me to Rome 🇮🇹'}
               </button>
             </div>
 
@@ -189,7 +189,7 @@ const LoginForm = ({ onSwitchToRegister }) => {
                 disabled={loadingGym}
                 className="btn-secondary w-full text-md"
                 >
-                  {loadingGym ? 'Loading Demo...' : 'Send me to a gym'}
+                  {loadingGym ? 'Loading Demo...' : 'Send me to the gym 💪'}
               </button>
             </div>
         

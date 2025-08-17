@@ -8,6 +8,11 @@ const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
+    <>
+    <head>
+      <title>Gems</title>
+      <link rel="icon" src={logo}/>
+    </head>
     <div className="min-h-screen font-gentium flex flex-col bg-center bg-cover items-center justify-center overflow-hidden p-4" style={{ backgroundImage: `url(${bg})` }}>
       <div className = "flex justify-center items-baseline gap-2">
         <img src={logo} alt="Logo" className="h-16 w-auto" />
@@ -21,6 +26,7 @@ const AuthPage = () => {
         <RegisterForm onSwitchToLogin={() => setIsLogin(true)} />
       )}
     </div>
+    </>
   );
 };
 
