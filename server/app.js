@@ -15,7 +15,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Development
-    'https://rococo-cheesecake-9f09f5.netlify.app' // Production
+    'https://gems16.netlify.app' // Production
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

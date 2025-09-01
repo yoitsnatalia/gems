@@ -3,141 +3,258 @@ const bcrypt = require('bcryptjs');
 
 const demoData = {
   users: [
-    { username: 'demo_user', email: 'demo@gems.app', password: 'demo123' },
-    { username: 'sarah_sf', email: 'sarah@demo.gems.app', password: 'demo123' },
-    { username: 'mike_paris', email: 'mike@demo.gems.app', password: 'demo123' },
-    { username: 'emma_tokyo', email: 'emma@demo.gems.app', password: 'demo123' },
-    { username: 'alex_nyc', email: 'alex@demo.gems.app', password: 'demo123' },
-    { username: 'lisa_london', email: 'lisa@demo.gems.app', password: 'demo123' }
-  ],
-  
-  // Demo user location: San Francisco (37.7749, -122.4194)
-  nearbyPosts: [
-    {
-      username: 'sarah_sf',
-      caption: '☕ Hidden gem coffee shop! Perfect morning spot with amazing pastries',
-      latitude: 37.7751, // 50 meters from demo user
-      longitude: -122.4190,
-      location_name: 'Union Square, San Francisco',
-      image_url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop&crop=center'
-    },
-    {
-      username: 'sarah_sf',
-      caption: '🌮 Best fish tacos in the city! Local secret spot',
-      latitude: 37.7745, // 80 meters from demo user
-      longitude: -122.4198,
-      location_name: 'Downtown San Francisco',
-      image_url: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop&crop=center'
-    },
-    {
-      username: 'alex_nyc',
-      caption: '🎨 Amazing street art! Such creativity in this alley',
-      latitude: 37.7750, // 30 meters from demo user
-      longitude: -122.4192,
-      location_name: 'Market Street, San Francisco',
-      image_url: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop&crop=center'
-    }
-  ],
-
-  sfPosts: [
-    {
-      username: 'sarah_sf',
-      caption: '🌅 Sunrise at Golden Gate! Worth the early wake-up call',
-      latitude: 37.8199,
-      longitude: -122.4783,
-      location_name: 'Golden Gate Bridge, San Francisco',
-      image_url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center'
-    },
-    {
-      username: 'alex_nyc',
-      caption: '🦭 Sea lions everywhere! Kids will love this spot',
-      latitude: 37.8086,
-      longitude: -122.4098,
-      location_name: 'Pier 39, San Francisco',
-      image_url: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5d?w=800&h=600&fit=crop&crop=center'
-    },
-    {
-      username: 'lisa_london',
-      caption: '🌳 Perfect picnic spot in Golden Gate Park. So peaceful!',
-      latitude: 37.7694,
-      longitude: -122.4862,
-      location_name: 'Golden Gate Park, San Francisco',
-      image_url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop&crop=center'
-    }
+    { username: 'emma_gym', email: 'gym@demo.gems.app', password: 'demo123' },
+    { username: 'emma_rome', email: 'rome@demo.gems.app', password: 'demo123' },
+    { username: 'emma_disney', email: 'disney@demo.gems.app', password: 'demo123' },
+    { username: 'betty', email: 'betty@demo.gems.app', password: 'demo123' },
+    { username: 'james', email: 'james@demo.gems.app', password: 'demo123' },
+    { username: 'inez', email: 'inez@demo.gems.app', password: 'demo123' },
   ],
 
   internationalPosts: [
-    // Paris Posts
+    // Disney Posts
     {
-      username: 'mike_paris',
-      caption: '🥐 Café au lait perfection! This boulangerie is pure magic',
-      latitude: 48.8566,
-      longitude: 2.3522,
-      location_name: 'Le Marais, Paris',
-      image_url: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=600&fit=crop&crop=center'
+        username: 'emma_disney',
+        caption: 'I\'m so ready.',
+        latitude: 33.8120,
+        longitude: -117.9185,
+        location_name: 'Astro Orbitor',
+        image_url: 'https://images.unsplash.com/photo-1662669764528-a03e163c9d8a?w=800&h=600&fit=crop&crop=center'
     },
     {
-      username: 'mike_paris',
-      caption: '🗼 Secret Eiffel Tower viewpoint! No crowds, perfect photos',
-      latitude: 48.8584,
-      longitude: 2.2945,
-      location_name: 'Trocadéro, Paris',
-      image_url: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop&crop=center'
-    },
-
-    // Tokyo Posts
-    {
-      username: 'emma_tokyo',
-      caption: '🍜 Hole-in-the-wall ramen spot. Life-changing tonkotsu broth!',
-      latitude: 35.6762,
-      longitude: 139.6503,
-      location_name: 'Shibuya, Tokyo',
-      image_url: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&h=600&fit=crop&crop=center'
+      username: 'betty',
+      caption: 'The most magical view :)',
+      latitude: 33.8124,
+      longitude: -117.9189,
+      location_name: 'Sleeping Beauty\'s Castle',
+      image_url: 'https://images.unsplash.com/photo-1584079797523-69256c98e107?w=800&h=600&fit=crop&crop=center'
     },
     {
-      username: 'emma_tokyo',
-      caption: '🌸 Cherry blossom season! Early morning for the best shots',
-      latitude: 35.7090,
-      longitude: 139.7319,
-      location_name: 'Ueno Park, Tokyo',
-      image_url: 'https://images.unsplash.com/photo-1522383225653-ed111181a951?w=800&h=600&fit=crop&crop=center'
-    },
-
-    // New York Posts
-    {
-      username: 'alex_nyc',
-      caption: '🥯 Best bagel in NYC! Worth the 20-minute line every time',
-      latitude: 40.7580,
-      longitude: -73.9855,
-      location_name: 'Times Square, New York',
-      image_url: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=600&fit=crop&crop=center'
+      username: 'betty',
+      caption: 'I\'ll never get over these Mickey shaped waffles, omg.',
+      latitude: 33.8117,
+      longitude: -117.9186,
+      location_name: 'Minnie & Friends - Breakfast in the Park',
+      image_url: 'https://images.unsplash.com/photo-1565006111725-706899ffbb7f?w=800&h=600&fit=crop&crop=center'
     },
     {
-      username: 'alex_nyc',
-      caption: '🌆 Rooftop bar with incredible skyline views. Sunset magic!',
-      latitude: 40.7614,
-      longitude: -73.9776,
-      location_name: 'Midtown Manhattan, New York',
-      image_url: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop&crop=center'
-    },
-
-    // London Posts
-    {
-      username: 'lisa_london',
-      caption: '☂️ Cozy pub with the best fish & chips. Perfect rainy day spot',
-      latitude: 51.5074,
-      longitude: -0.1278,
-      location_name: 'Westminster, London',
-      image_url: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop&crop=center'
+        username: 'betty',
+        caption: 'Yo ho, bro',
+        latitude: 33.8118,
+        longitude: -117.9203,
+        location_name: 'Pirates of the Caribbean',
+        image_url: 'https://images.unsplash.com/photo-1681934539843-4763a630b94f?w=800&h=600&fit=crop&crop=center'
     },
     {
-      username: 'lisa_london',
-      caption: '🎡 London Eye area has this hidden gem garden. Tourist-free zone!',
-      latitude: 51.5033,
-      longitude: -0.1195,
-      location_name: 'South Bank, London',
-      image_url: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop&crop=center'
-    }
+        username: 'james',
+        caption: 'Everyone knows this is the best Disneyland ride.',
+        latitude: 33.8146,
+        longitude: -117.9178,
+        location_name: 'I\'ts a Small World',
+        image_url: 'https://images.unsplash.com/photo-1586311474914-bc6000c52358?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Never gets old AHHHHHH',
+        latitude: 33.8112,
+        longitude: -117.9207,
+        location_name: 'Space Mountain',
+        image_url: 'https://images.unsplash.com/photo-1740889089141-3b60d6a1247c?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: '999 happy haunts and room for one more… guess I\’m moving in.',
+        latitude: 33.8128,
+        longitude: -117.9210,
+        location_name: 'Haunted Mansion',
+        image_url: 'https://images.unsplash.com/photo-1652387629882-95cb54299390?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'made it to batuu!!',
+        latitude: 33.8146,
+        longitude: -117.9210,
+        location_name: 'Galaxy\'s Edge',
+        image_url: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'yeti jump-scare count: 3.',
+        latitude: 33.8131,
+        longitude: -117.9175,
+        location_name: 'Matterhorn',
+        image_url: 'https://images.unsplash.com/photo-1623345573216-f6e8be64ac6d?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'so, i\'ve had three of these... and counting.',
+        latitude: 33.8118,
+        longitude: -117.9195,
+        location_name: 'Dole Whip',
+        image_url: 'https://images.unsplash.com/photo-1647738876160-c5c1b664150e?w=800&h=600&fit=crop&crop=center'
+    },
+    // Rome
+    {
+        username: 'emma_rome',
+        caption: 'The best tiramisu I\'ve ever had. 1000/5 stars.',
+        latitude: 41.8995,
+        longitude: 12.4765,
+        location_name: 'Osteria Del Gallo',
+        image_url: 'https://images.unsplash.com/photo-1647943766693-a9ce5760e50c?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'I can\'t even comprehend how old this is... actual chills.',
+        latitude: 41.8991,
+        longitude: 12.4767,
+        location_name: 'Pantheon',
+        image_url: 'https://images.unsplash.com/photo-1714687398943-3edbfd43b830?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Carbonara before sightseeing = elite strategy.',
+        latitude: 41.8990,
+        longitude: 12.4762,
+        location_name: 'Armando al Pantheon (Trattoria)',
+        image_url: 'https://images.unsplash.com/photo-1686199859328-7660f648e70d?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'mandatory gelato stop!',
+        latitude: 41.8994,
+        longitude: 12.4775,
+        location_name: "Gelateria",
+        image_url: 'https://images.unsplash.com/photo-1602532769069-0e856a643e7d?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'When in Rome… stand amazed.',
+        latitude: 41.8902,
+        longitude: 12.4922,
+        location_name: 'Colosseum',
+        image_url: 'https://images.unsplash.com/photo-1597693115357-da19194735d5?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Coin tossed, wish made. Gelato time.',
+        latitude: 41.9009,
+        longitude: 12.4833,
+        location_name: 'Trevi Fountain',
+        image_url: 'https://images.unsplash.com/photo-1584999872814-569a6b02a2b4?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Evening strolls and baroque fountains for days.',
+        latitude: 41.8992,
+        longitude: 12.4731,
+        location_name: 'Piazza Navona',
+        image_url: 'https://images.unsplash.com/photo-1587891770869-110104a6b5e9?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'Steps climbed. Cappuccino secured.',
+        latitude: 41.9059,
+        longitude: 12.4823,
+        location_name: 'Spanish Steps (Piazza di Spagna)',
+        image_url: 'https://images.unsplash.com/photo-1534016493773-9cdaf3eb86c0?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'golden hour across the tiber hits different.',
+        latitude: 41.9039,
+        longitude: 12.4663,
+        location_name: 'Castel Sant\'Angelo',
+        image_url: 'https://images.unsplash.com/photo-1618475667510-bd1315b1388a?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'cobblestones, ivy, and trattoria chatter.',
+        latitude: 41.8896,
+        longitude: 12.471,
+        location_name: 'Trastevere',
+        image_url: 'https://images.unsplash.com/photo-1569230516306-5a8cb5586399?w=800&h=600&fit=crop&crop=center'
+    },
+    // gym
+    {
+        username: 'emma_gym',
+        caption: 'Pre-workout matcha!!',
+        latitude: 33.6972,
+        longitude: -117.7408,
+        location_name: 'Starbucks',
+        image_url: 'https://images.unsplash.com/photo-1720294211016-aaf67dddd5dc?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'Leg day demolished 🏋️',
+        latitude: 33.6977,
+        longitude: -117.7405,
+        location_name: 'LA Fitness',
+        image_url: 'https://images.unsplash.com/photo-1584863231364-2edc166de576?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Hit a PR today...',
+        latitude: 33.6978,
+        longitude: -117.7404,
+        location_name: 'LA Fitness',
+        image_url: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'forgot my airpods today :( hey, but the gym music was pretty fire.',
+        latitude: 33.6980,
+        longitude: -117.7404,
+        location_name: "LA Fitness",
+        image_url: 'https://images.unsplash.com/photo-1603077492579-39ff927823db?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'Can never go wrong with a footlong flatbread.',
+        latitude: 33.6980,
+        longitude: -117.7409,
+        location_name: 'Subway',
+        image_url: 'https://images.unsplash.com/photo-1525980978611-a89001322e01?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Cava will always have a ~pita~ my heart <3',
+        latitude: 33.6981,
+        longitude: -117.7411,
+        location_name: 'Cava',
+        image_url: 'https://images.unsplash.com/photo-1612390649890-9498b83d445c?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'james',
+        caption: 'Panera is my second home.',
+        latitude: 33.6976,
+        longitude: -117.7410,
+        location_name: 'Panera Bread',
+        image_url: 'https://images.unsplash.com/photo-1720026664794-9f2909cda2fa?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'betty',
+        caption: 'Stocked up on the essentials.',
+        latitude: 33.6983,
+        longitude: -117.7429,
+        location_name: 'Trader Joe\'s',
+        image_url: 'https://images.unsplash.com/photo-1736551944714-f4f5e04288f1?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'i love chipotle.',
+        latitude: 33.6984,
+        longitude: -117.7411,
+        location_name: 'Chipotle',
+        image_url: 'https://images.unsplash.com/photo-1730817403334-d723c05591e6?w=800&h=600&fit=crop&crop=center'
+    },
+    {
+        username: 'inez',
+        caption: 'daily boba aquired.',
+        latitude: 33.6977,
+        longitude: -117.7410,
+        location_name: 'Boba Shop',
+        image_url: 'https://images.unsplash.com/photo-1636737187581-f25682019be7?w=800&h=600&fit=crop&crop=center'
+    }, 
   ]
 };
 
@@ -169,7 +286,7 @@ const createDemoExperience = async () => {
     console.log('✅ Demo users created');
 
     // Create all posts (nearby + SF + international)
-    const allPosts = [...demoData.nearbyPosts, ...demoData.sfPosts, ...demoData.internationalPosts];
+    const allPosts = [...demoData.internationalPosts];
     
     for (const postData of allPosts) {
       const userResult = await pool.query(
@@ -197,23 +314,23 @@ const createDemoExperience = async () => {
     console.log('✅ Demo posts created globally');
 
     // Create friendships (demo user is friends with everyone)
-    const users = await pool.query('SELECT id FROM users WHERE email LIKE $1', ['%@demo.gems.app']);
-    const demoUser = await pool.query('SELECT id FROM users WHERE email = $1', ['demo@gems.app']);
+    // const users = await pool.query('SELECT id FROM users WHERE email LIKE $1', ['%@demo.gems.app']);
+    // const demoUser = await pool.query('SELECT id FROM users WHERE email = $1', ['demo@gems.app']);
     
-    if (demoUser.rows.length > 0) {
-      for (const user of users.rows) {
-        if (user.id !== demoUser.rows[0].id) {
-          const [smallerId, largerId] = demoUser.rows[0].id < user.id ? 
-            [demoUser.rows[0].id, user.id] : [user.id, demoUser.rows[0].id];
+    // if (demoUser.rows.length > 0) {
+    //   for (const user of users.rows) {
+    //     if (user.id !== demoUser.rows[0].id) {
+    //       const [smallerId, largerId] = demoUser.rows[0].id < user.id ? 
+    //         [demoUser.rows[0].id, user.id] : [user.id, demoUser.rows[0].id];
           
-          await pool.query(`
-            INSERT INTO friendships (user1_id, user2_id, status)
-            VALUES ($1, $2, 'accepted')
-          `, [smallerId, largerId]);
-        }
-      }
-    }
-    console.log('✅ Demo friendships created');
+    //       await pool.query(`
+    //         INSERT INTO friendships (user1_id, user2_id, status)
+    //         VALUES ($1, $2, 'accepted')
+    //       `, [smallerId, largerId]);
+    //     }
+    //   }
+    // }
+    // console.log('✅ Demo friendships created');
 
     await pool.end();
     console.log('🎉 Global demo experience ready!');

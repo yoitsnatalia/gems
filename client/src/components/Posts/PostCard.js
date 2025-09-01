@@ -80,7 +80,7 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false, onUnlo
       </div>
 
       {/* Image */}
-      <div className="relative mb-4">
+      <div className="relative mb-4 overflow-hidden rounded-lg">
         {imageLoading && (
           <div className="absolute inset-0 bg-gray-200 rounded-lg flex items-center justify-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
@@ -89,7 +89,7 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false, onUnlo
         <img
           src={post.image_url}
           alt="Post"
-          className="w-full h-64 object-cover rounded-lg"
+          className={`w-full h-64 object-cover rounded-lg ${canUnlock && !isUnlocked && "blur-lg"}`}
           onLoad={() => setImageLoading(false)}
           onError={() => setImageLoading(false)}
         />
@@ -98,7 +98,7 @@ const PostCard = ({ post, onClose, canUnlock = false, isUnlocked = false, onUnlo
       {/* Caption */}
       {post.caption && (
         <div className="mb-4">
-          <p className="text-gray-800">{post.caption}</p>
+          <p className={`text-gray-800 ${canUnlock && !isUnlocked && "blur-sm"}`}>{post.caption}</p>
         </div>
       )}
 

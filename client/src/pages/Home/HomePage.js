@@ -137,6 +137,10 @@ const HomePage = () => {
   };
 
   return (
+    <>
+    <head>
+      <title>Gems</title>
+    </head>
     <div className="min-h-screen font-gentium bg-center bg-cover"  style={{ backgroundImage: `url(${bg})` }}>
       <header className="top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -273,6 +277,7 @@ const HomePage = () => {
                 
                 <div className="h-[31rem] sm:h-80 lg:h-[38rem] rounded-lg border-2 border-gray-700 overflow-hidden">
                   <MapView
+                    user={user}
                     userLocation={effectiveLocation}
                     posts={allPosts}
                     onPostClick={handlePostClick}
@@ -399,6 +404,7 @@ const HomePage = () => {
         )}
       </main>
     </div>
+    </>
   );
 };
 
