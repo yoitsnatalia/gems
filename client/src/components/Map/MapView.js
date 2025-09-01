@@ -20,7 +20,7 @@ const MapView = ({ user, userLocation, posts = [], onPostClick, onMapClick }) =>
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [defaultLocation.longitude, defaultLocation.latitude],
-      zoom: window.innerWidth < 768 ? 12 : 13, // Zoom out on mobile
+      zoom: window.innerWidth < 768 ? 15 : 16, // Zoom out on mobile
       maxZoom: 18,
       
     });
