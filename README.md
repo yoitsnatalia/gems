@@ -73,7 +73,7 @@ POST /api/friends/unlock          # Unlock post by proximity
 - **UX Design** - Intuitive mystery/reveal interaction for location unlocking
 - **Authentic Discovery** - Prevented fake check-ins through geolocation requirements
 
-## 👨‍💻 Developer
+## Developer
 
 **[Natalia]**  
-Portfolio: [Your Portfolio URL] | LinkedIn: [Your LinkedIn]
+Portfolio: [https://yoitsnatalia.github.io/] | LinkedIn: [www.linkedin.com/in/natalia-linn]
